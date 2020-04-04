@@ -1,0 +1,18 @@
+CTLSPEC:              (operon = 0 -> AG !(operon = 2))
+INIT:                 TRUE
+INIT_SIZE:            8
+ACCEPTING:            TRUE
+ACCEPTING_SIZE:       8
+INITACCEPTING:        TRUE
+INITACCEPTING_SIZE:   8
+ANSWER:               TRUE
+
+CTLSPEC:              (operon = 2 -> AG !(operon = 0))
+INIT:                 TRUE
+INIT_SIZE:            8
+ACCEPTING:            TRUE
+ACCEPTING_SIZE:       8
+INITACCEPTING:        TRUE
+INITACCEPTING_SIZE:   8
+ANSWER:               TRUE
+
