@@ -9,5 +9,5 @@ Un exemple d'utilisation tiré du tutoriel de PyBoolNet est aussi présent afin 
 La ligne de commande pour obtenir le fichier de sortie mucus_accetping : `NuSMV -a mucus_accepting mucusOperon.smv`
 
 ## Objectifs pour le prochain rendez-vous:
-- [ ] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
+- [x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
 - [ ] Essayer de tracer complètement la démarche de l'article sur les commitment sets et comprendre comment sont obtenus les diagrammes de la figure 3 de l'article de départ. Essayer aussi de voir en détail les entrées/sorties vers NuSMV-a.
