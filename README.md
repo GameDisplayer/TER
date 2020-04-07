@@ -1,7 +1,5 @@
 # TER
-Sujet : 
-======
-Analyse des phénotypes dans les réseaux de régulation génétiques: étude de cas du métabolisme énergétique dans le cancer du pancréas.
+Sujet : Analyse des phénotypes dans les réseaux de régulation génétiques: étude de cas du métabolisme énergétique dans le cancer du pancréas.
 
 ## Détails :
 - Le dossier **test_pyboolnet_semaphore** contient deux scripts python : 
