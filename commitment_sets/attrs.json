@@ -1,0 +1,143 @@
+{
+    "attractors": [
+        {
+            "is_steady": true, 
+            "cyclefree_basin": {
+                "perc": 25.0, 
+                "formula": "!(Erk | (Mek))", 
+                "size": 2
+            }, 
+            "state": {
+                "dict": {
+                    "Raf": 1, 
+                    "Mek": 0, 
+                    "Erk": 0
+                }, 
+                "str": "001", 
+                "prop": "!Erk&!Mek&Raf"
+            }, 
+            "weak_basin": {
+                "perc": 62.5, 
+                "formula": "!(Erk & (Mek) | !Erk & (Mek & (Raf)))", 
+                "size": 5
+            }, 
+            "strong_basin": {
+                "perc": 25.0, 
+                "formula": "!(Erk | (Mek))", 
+                "size": 2
+            }, 
+            "mintrapspace": {
+                "is_faithful": "yes", 
+                "dict": {
+                    "Raf": 1, 
+                    "Mek": 0, 
+                    "Erk": 0
+                }, 
+                "is_univocal": "yes", 
+                "str": "001", 
+                "prop": "!Erk&!Mek&Raf"
+            }, 
+            "is_cyclic": false
+        }, 
+        {
+            "is_steady": false, 
+            "cyclefree_basin": {
+                "perc": 37.5, 
+                "formula": "Erk & (Mek) | !Erk & (Mek & (Raf))", 
+                "size": 3
+            }, 
+            "state": {
+                "dict": {
+                    "Raf": 0, 
+                    "Mek": 1, 
+                    "Erk": 1
+                }, 
+                "str": "110", 
+                "prop": "Erk&Mek&!Raf"
+            }, 
+            "weak_basin": {
+                "perc": 75.0, 
+                "formula": "Erk | (Mek)", 
+                "size": 6
+            }, 
+            "strong_basin": {
+                "perc": 37.5, 
+                "formula": "Erk & (Mek) | !Erk & (Mek & (Raf))", 
+                "size": 3
+            }, 
+            "mintrapspace": {
+                "is_faithful": "yes", 
+                "dict": {
+                    "Mek": 1, 
+                    "Erk": 1
+                }, 
+                "is_univocal": "yes", 
+                "str": "11-", 
+                "prop": "Erk&Mek"
+            }, 
+            "is_cyclic": true
+        }
+    ], 
+    "primes": {
+        "Raf": [
+            [
+                {
+                    "Raf": 1, 
+                    "Erk": 1
+                }
+            ], 
+            [
+                {
+                    "Raf": 0
+                }, 
+                {
+                    "Erk": 0
+                }
+            ]
+        ], 
+        "Mek": [
+            [
+                {
+                    "Raf": 0, 
+                    "Erk": 0
+                }, 
+                {
+                    "Mek": 0, 
+                    "Erk": 0
+                }
+            ], 
+            [
+                {
+                    "Raf": 1, 
+                    "Mek": 1
+                }, 
+                {
+                    "Erk": 1
+                }
+            ]
+        ], 
+        "Erk": [
+            [
+                {
+                    "Raf": 0, 
+                    "Erk": 0
+                }, 
+                {
+                    "Mek": 0
+                }
+            ], 
+            [
+                {
+                    "Raf": 1, 
+                    "Mek": 1
+                }, 
+                {
+                    "Mek": 1, 
+                    "Erk": 1
+                }
+            ]
+        ]
+    }, 
+    "update": "asynchronous", 
+    "is_complete": "yes"
+}
