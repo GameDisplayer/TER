@@ -9,7 +9,7 @@ Sujet : Analyse des phénotypes dans les réseaux de régulation génétiques: �
 Un exemple d'utilisation tiré du tutoriel de PyBoolNet est aussi présent afin de pouvoir tester la méthode modifiée.
 - Le dossier **mucus_nusmv_a** a pour but d'analyser le fonctionnement de NuSMV-a sur le fichier d'étude mucusOperon.smv.
 La ligne de commande pour obtenir le fichier de sortie mucus_accetping : `NuSMV -a mucus_accepting mucusOperon.smv`
-- Le dossier **commitment_sets** contient un fichier *commitment_sets* qui a pour but de retracer les étapes du paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8580379.
+- Le dossier **commitment_sets** contient un fichier *commitment_sets* qui a pour but de retracer les étapes du paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8580379 en générant le state transition graph ainsi que les bassins d'attractions et les commitment sets (à partir des attracteurs du fichier json).
 
 ## Objectifs pour le prochain rendez-vous:
 - [x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
