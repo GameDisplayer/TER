@@ -19,4 +19,4 @@ La ligne de commande pour obtenir le fichier de sortie mucus_accetping : `NuSMV 
 ## Objectifs pour le prochain rendez-vous:
 - [x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
 - [x] Essayer de tracer complètement la démarche de l'article sur les commitment sets et comprendre comment sont obtenus les diagrammes de la figure 3 de l'article de départ. Essayer aussi de voir en détail les entrées/sorties vers NuSMV-a.
-- [] Analyse du parser de NuSMV -a et compréhension de NuSMV
+- [ ] Analyse du parser de NuSMV -a et compréhension de NuSMV
