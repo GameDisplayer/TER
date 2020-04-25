@@ -1,0 +1,45 @@
+Attractors.compute_json(..)
+ Attractors.completeness(..) yes
+ working on minimal trapspace 1/2: 001
+  Attractors.univocality(..) yes
+  Attractors.faithfulness(..) yes
+  Attractors.find_attractor_state_by_randomwalk_and_ctl(..)
+ working on minimal trapspace 2/2: 11-
+  Attractors.univocality(..) yes
+  Attractors.faithfulness(..) yes
+  Attractors.find_attractor_state_by_randomwalk_and_ctl(..)
+Commitment.compute_diagram(..)
+ excluding the non-critical out-dag nodes []
+ working on 1 connected component(s)
+ _compute_diagram_component(..)
+  inputs: 0 ()
+  combinations:  1
+  input combination 0, worst case #nodes: 3
+
+created /tmp/pyboolnet_WBjvOY
+('CMD', ['NuSMV', '-dcx', '-a', 'print', '-dynamic', '-coi', '-df', '/tmp/pyboolnet_WBjvOY'])
+<subprocess.Popen object at 0x7f3e416c3510>
+created /tmp/pyboolnet_3D4Jc5
+('CMD', ['NuSMV', '-dcx', '-a', 'print', '-dynamic', '-coi', '-df', '/tmp/pyboolnet_3D4Jc5'])
+<subprocess.Popen object at 0x7f3e0fbe2f10>
+created /tmp/pyboolnet_TMStTp
+('CMD', ['NuSMV', '-dcx', '-a', 'print', '-dynamic', '-coi', '-df', '/tmp/pyboolnet_TMStTp'])
+<subprocess.Popen object at 0x7f3e416c3550>
+  worst case #nodes: 3
+  actual nodes: 3 = 100.00%
+  worst case #edges: 2
+created /tmp/pyboolnet_rW0B2a
+('CMD', ['NuSMV', '-dcx', '-a', 'print', '-dynamic', '-coi', '-df', '/tmp/pyboolnet_rW0B2a'])
+<subprocess.Popen object at 0x7f3e0fbe2f10>
+created /tmp/pyboolnet_aXVFzf
+('CMD', ['NuSMV', '-dcx', '-a', 'print', '-dynamic', '-coi', '-df', '/tmp/pyboolnet_aXVFzf'])
+<subprocess.Popen object at 0x7f3e416c3690>
+  actual edges: 2 = 100.00%
+  total executions of NuSMV: 5
+ total executions of NuSMV: 5
+
+1) /tmp/pyboolnet_WBjvOY
+2) /tmp/pyboolnet_3D4Jc5
+3) /tmp/pyboolnet_TMStTp
+4) /tmp/pyboolnet_rW0B2a
+5) /tmp/pyboolnet_aXVFzf
