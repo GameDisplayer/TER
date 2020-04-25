@@ -15,8 +15,8 @@ Un exemple d'utilisation tiré du tutoriel de PyBoolNet est aussi présent afin 
 La ligne de commande pour obtenir le fichier de sortie mucus_accetping : `NuSMV -a mucus_accepting mucusOperon.smv`
 
 - Le dossier **commitment_sets** contient :
-  1. un fichier *commitment_sets* qui a pour but de retracer les étapes du paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8580379 en générant le state transition graph ainsi que les bassins d'attraction et les commitment sets (à partir des attracteurs du fichier json) sur un exemple simple.
-  2. un fichier *understand* qui a pour but de récupérer les logs de NuSMV lors de la création des commitment sets (sur le même exemple que ci-dessus) afin de comprendre l'évolution des CTL (et plus généralement le model checking mis en place).
+  1. un fichier ***commitment_sets*** qui a pour but de retracer les étapes du paper https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8580379 en générant le state transition graph ainsi que les bassins d'attraction et les commitment sets à partir des attracteurs du fichier json d'un exemple simple (fichiers disponibles dans le dossier *visualisation*).
+  2. un fichier ***understand*** qui a pour but de récupérer les logs de NuSMV lors de la création des commitment sets (sur le même exemple que ci-dessus) afin de comprendre l'évolution des CTL et plus généralement le model checking mis en place (disponibles dans le dossier *pyboolnet_accepting_files*).
 
 - Le dossier **parser_nusmv_a** contient les fichiers .c de la librairie NuSMV -a qui parsent les réponses de NuSMV et renvoient les accepting states.
 
