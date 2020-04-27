@@ -1,0 +1,243 @@
+*** This is NuSMV-A (compiled on Mon Nov 27 18:06:11 2017)
+*** NuSMV-A is an extension of NuSMV 2.6.0
+*** For more information on NuSMV-A see <http://github.com/hklarner/NuSMV-A>
+*** Enabled addons are: compass
+*** For more information on NuSMV see <http://nusmv.fbk.eu>
+*** or email to <nusmv-users@list.fbk.eu>.
+*** Please report bugs to <Please report bugs to <nusmv-users@fbk.eu>>
+
+*** Copyright (c) 2010-2014, Fondazione Bruno Kessler
+
+*** This version of NuSMV is linked to the CUDD library version 2.4.1
+*** Copyright (c) 1995-2004, Regents of the University of Colorado
+
+*** This version of NuSMV is linked to the MiniSat SAT solver. 
+*** See http://minisat.se/MiniSat.html
+*** Copyright (c) 2003-2006, Niklas Een, Niklas Sorensson
+*** Copyright (c) 2007-2010, Niklas Sorensson
+
+Starting the batch interaction.
+Parsing file "pyboolnetFileTest" ..... done.
+Initializing the flattener...
+SymbTable: created new layer 'model'
+SymbTable: Added layer 'model' to class 'Model Class'
+SymbTable: default layers class set to 'Model Class'
+SymbLayer 'model': declared new DEFINE 'STEADYSTATE'
+SymbLayer 'model': declared new DEFINE 'SUCCESSORS'
+SymbLayer 'model': declared new DEFINE 'Raf_STEADY'
+SymbLayer 'model': declared new DEFINE 'Mek_STEADY'
+SymbLayer 'model': declared new DEFINE 'Erk_STEADY'
+SymbLayer 'model': declared new DEFINE 'Raf_IMAGE'
+SymbLayer 'model': declared new DEFINE 'Mek_IMAGE'
+SymbLayer 'model': declared new DEFINE 'Erk_IMAGE'
+SymbLayer 'model': declared new state variable 'Erk'
+SymbLayer 'model': declared new state variable 'Mek'
+SymbLayer 'model': declared new state variable 'Raf'
+FlatHierarchy: calculating vars constrains...
+Constant expression found in a INIT statement in
+file pyboolnetFileTest: line 1:  The expression is "TRUE" (Skipped)
+FlatHierarchy: vars constrains calculated
+Successful type-checking of the module constrains
+No check for input vars
+checking for multiple assignments in process ...
+Done
+checking for circular assignments in process ...
+Done
+Successful type-checking of a property
+Attempting to add CTL property (index 0) to property list.
+CTL property (index 0) successfully added to property list.
+TraceMgr: registered layer 'model'
+...done
+
+Initializing global boolean encoding...
+Global boolean encoding initialized.
+BoolEnc committing layer 'model'
+SymbTable: created new layer 'model_bool'
+
+Heuristics "basic" is going to be used to create varordering statically
+
+Initializing global BDD encoding...
+Global BDD encoding initialized.
+BddEnc committing layer 'model'
+
+Creating the scalar FSM...
+FlatHierarchy: calculating vars constrains...
+Constant expression found in a INIT statement in
+file pyboolnetFileTest: line 1:  The expression is "TRUE" (Skipped)
+FlatHierarchy: vars constrains calculated
+Triggering postponed calculation of vars constrains
+FlatHierarchy: calculating vars constrains...
+FlatHierarchy: vars constrains calculated
+Successfully created the scalar FSM
+
+Creating the BDD FSM...
+Reading the trans variable ordering from the BDD encoder
+FsmBuilder: created cluster for expression
+FsmBuilder: created cluster for expression
+FsmBuilder: created cluster for expression
+FsmBuilder: created cluster for expression
+Successfully created the BDD FSM
+Registering complete trace executor 'bdd'
+Registering partial trace executor 'bdd'
+
+The model has been built from file pyboolnetFileTest.
+Ordering properties by COI size
+Initializing Cone Of Influence...
+*** INIT COI ***
+Variable  Erk
+  Has non-assign constraints
+  Initial coi: {Erk, Mek, Raf}
+Variable  Mek
+  Has non-assign constraints
+  Initial coi: {Mek, Raf, Erk}
+Variable  Raf
+  Has non-assign constraints
+  Initial coi: {Raf, Erk, Mek}
+COI initialized.
+Properties ordering done
+evaluating specification (EF ((!Erk & !Mek) & Raf) & AG (EF ((!Erk & !Mek) & Raf)))  
+
+computing reachable state space
+  iteration 1: BDD size = 1, frontier size = 1, states = 8
+  forward step done, size = 1
+  new frontier computed, size = 1
+done
+Computing the set of fair <state>x<input> pairs
+done
+eu: computing fixed point approximations for EF ((!Erk & !Mek) & Raf) ...
+size of Y1 = 1 states, 4 BDD nodes
+size of Y2 = 3 states, 5 BDD nodes
+size of Y3 = 5 states, 5 BDD nodes
+eu: computing fixed point approximations for EF ((!Erk & !Mek) & Raf) ...
+size of Y1 = 1 states, 4 BDD nodes
+size of Y2 = 3 states, 5 BDD nodes
+size of Y3 = 5 states, 5 BDD nodes
+eu: computing fixed point approximations for AG (EF ((!Erk & !Mek) & Raf)) ...
+size of Y1 = 3 states, 5 BDD nodes
+size of Y2 = 6 states, 3 BDD nodes
+-- specification (EF ((!Erk & !Mek) & Raf) & AG (EF ((!Erk & !Mek) & Raf)))  is false
+eu: computing fixed point approximations for EF ((!Erk & !Mek) & Raf) ...
+size of Y1 = 1 states, 4 BDD nodes
+size of Y2 = 3 states, 5 BDD nodes
+size of Y3 = 5 states, 5 BDD nodes
+eu: computing fixed point approximations for EF ((!Erk & !Mek) & Raf) ...
+size of Y1 = 1 states, 4 BDD nodes
+size of Y2 = 3 states, 5 BDD nodes
+size of Y3 = 5 states, 5 BDD nodes
+eu: computing fixed point approximations for AG (EF ((!Erk & !Mek) & Raf)) ...
+size of Y1 = 3 states, 5 BDD nodes
+size of Y2 = 6 states, 3 BDD nodes
+MasterNodeWalker: registering walker 'Core SMV Type Checker'... ok
+MasterNodeWalker: registering walker 'Statements SMV Type Checker'... ok
+MasterNodeWalker: registering walker 'PSL Type Checker'... ok
+SymbTable: default layers class set to 'Model Class'
+SymbTable: created new layer 'model'
+SymbTable: Added layer 'model' to class 'Model Class'
+SymbLayer 'model': declared new DEFINE 'STEADYSTATE'
+SymbLayer 'model': declared new DEFINE 'SUCCESSORS'
+SymbLayer 'model': declared new DEFINE 'Raf_STEADY'
+SymbLayer 'model': declared new DEFINE 'Mek_STEADY'
+SymbLayer 'model': declared new DEFINE 'Erk_STEADY'
+SymbLayer 'model': declared new DEFINE 'Raf_IMAGE'
+SymbLayer 'model': declared new DEFINE 'Mek_IMAGE'
+SymbLayer 'model': declared new DEFINE 'Erk_IMAGE'
+SymbLayer 'model': declared new state variable 'Erk'
+SymbLayer 'model': declared new state variable 'Mek'
+SymbLayer 'model': declared new state variable 'Raf'
+SymbTable: created new layer 'model_bool'
+trace (id = 0) is now thawed
+trace is now unregistered
+
+
+=======================
+Trace allocation stats:
+=======================
+
+frozen variables [ 0 ] : 
+state variables: [ 3 ] : Erk Mek Raf 
+input variables: [ 0 ] : 
+state defines:  [ 8 ] : STEADYSTATE SUCCESSORS Raf_STEADY Mek_STEADY Erk_STEADY Raf_IMAGE Mek_IMAGE Erk_IMAGE 
+input defines: [ 0 ] : 
+state-input defines: [ 0 ] : 
+next defines: [ 0 ] : 
+state-next defines: [ 0 ] : 
+input-next defines: [ 0 ] : 
+state-input-next defines: [ 0 ] : 
+
+-- as demonstrated by the following execution sequence
+trace is now registered (id = 1)
+Trace Description: CTL Counterexample 
+Trace Type: Counterexample 
+  -> State: 1.1 <-
+    Erk = TRUE
+    Mek = FALSE
+    Raf = FALSE
+    STEADYSTATE = FALSE
+    SUCCESSORS = 3
+    Raf_STEADY = FALSE
+    Mek_STEADY = FALSE
+    Erk_STEADY = FALSE
+    Raf_IMAGE = TRUE
+    Mek_IMAGE = TRUE
+    Erk_IMAGE = FALSE
+Ordering properties by COI size
+Properties ordering done
+Ordering properties by COI size
+Properties ordering done
+Ordering properties by COI size
+Properties ordering done
+Ordering properties by COI size
+Properties ordering done
+######################################################################
+Runtime Statistics
+------------------
+Machine name: jojo-gp62-6qf
+User time    0.013 seconds
+System time  0.009 seconds
+
+Average resident text size       =     0K
+Average resident data+stack size =     0K
+Maximum resident size            =  8702K
+
+Virtual text size                =  6831K
+Virtual data size                = 31629K
+    data size initialized        =  2976K
+    data size uninitialized      =    68K
+    data size sbrk               = 28585K
+Virtual memory limit             = -2147483648K (-2147483648K)
+
+Major page faults = 0
+Minor page faults = 2893
+Swaps = 0
+Input blocks = 0
+Output blocks = 0
+Context switch (voluntary) = 0
+Context switch (involuntary) = 1
+######################################################################
+BDD statistics
+--------------------
+BDD nodes allocated: 234
+--------------------
+Statistics on BDD FSM machine.
+BDD nodes representing init set of states: 1
+BDD nodes representing state constraints: 1
+BDD nodes representing input constraints: 1
+Forward Partitioning Schedule BDD cluster size (#nodes):
+cluster 1	:	size 19
+Backward Partitioning Schedule BDD cluster size (#nodes):
+cluster 1	:	size 19
+Quitting core addons...
+Quitting the Compass package... 
+trace is now unregistered
+Quitting the BMC package... 
+Resetting the SBMC module...
+Done 
+Done 
+SymbTable: destroying layer 'model_bool'
+Shutting down the compiler...
+Forcing destruction of previoulsy created BDD FSM...
+Forcing destruction of previoulsy created SEXP FSM...
+Clearing the symbol table package...
+Clearing the flattener...
+
+Successful termination

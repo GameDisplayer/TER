@@ -1,0 +1,69 @@
+-- Flattened FSM model generated from pyboolnetFileTest
+-- Dumped layers are: model 
+
+MODULE main
+-- Input variables from layer 'model'
+-- State variables from layer 'model'
+VAR
+Erk : boolean;
+Mek : boolean;
+Raf : boolean;
+
+-- Frozen variables from layer 'model'
+-- Functions from layer 'model'
+-- Defines from layer 'model'
+DEFINE
+STEADYSTATE := SUCCESSORS = 0;
+SUCCESSORS := case
+!Raf_STEADY : 1;
+TRUE : 0;
+esac + (case
+!Mek_STEADY : 1;
+TRUE : 0;
+esac + case
+!Erk_STEADY : 1;
+TRUE : 0;
+esac);
+Raf_STEADY := Raf_IMAGE = Raf;
+Mek_STEADY := Mek_IMAGE = Mek;
+Erk_STEADY := Erk_IMAGE = Erk;
+Raf_IMAGE := (!Raf | !Erk);
+Mek_IMAGE := ((Mek & Raf) | Erk);
+Erk_IMAGE := ((Mek & Raf) | (Erk & Mek));
+
+-- Assignments from layer 'model'
+ASSIGN
+next(Erk) := Erk union __expr0;
+
+ASSIGN
+next(Mek) := Mek union __expr1;
+
+ASSIGN
+next(Raf) := Raf union __expr2;
+
+
+
+TRANS
+ (SUCCESSORS = 0 | case
+next(Raf) != Raf : 1;
+TRUE : 0;
+esac + (case
+next(Mek) != Mek : 1;
+TRUE : 0;
+esac + case
+next(Erk) != Erk : 1;
+TRUE : 0;
+esac) = 1)
+
+
+CTLSPEC
+ (EF ((!Erk & !Mek) & Raf) & AG (EF ((!Erk & !Mek) & Raf)));
+
+
+-- Symbols introduced by the dumper:
+DEFINE __expr1 := ((Mek & Raf) | Erk) ;
+
+DEFINE __expr0 := ((Mek & Raf) | (Erk & Mek)) ;
+
+DEFINE __expr2 := (!Raf | !Erk) ;
+

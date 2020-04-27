@@ -1,0 +1,111 @@
+-- Flattened Boolean FSM model  generated from pyboolnetFileTest
+-- Dumped cwd->layers are: model model_bool determ determ_bool __TempLayer_0 
+
+MODULE main
+-- Input variables from layer 'model'
+-- Input variables from layer 'model_bool'
+-- Input variables from layer 'determ'
+-- Input variables from layer 'determ_bool'
+-- Input variables from layer '__TempLayer_0'
+-- State variables from layer 'model'
+VAR
+Erk : boolean;
+Mek : boolean;
+Raf : boolean;
+
+-- State variables from layer 'model_bool'
+-- State variables from layer 'determ'
+-- State variables from layer 'determ_bool'
+-- State variables from layer '__TempLayer_0'
+-- Frozen variables from layer 'model'
+-- Frozen variables from layer 'model_bool'
+-- Frozen variables from layer 'determ'
+-- Frozen variables from layer 'determ_bool'
+-- Frozen variables from layer '__TempLayer_0'
+
+
+TRANS
+ ((__expr0 & (__expr1 & Raf)) | case
+Erk : case
+next(Erk) : __expr5;
+TRUE : __expr7;
+esac;
+next(Erk) : __expr7;
+TRUE : __expr5;
+esac)
+
+TRANS
+ __expr9
+
+TRANS
+ __expr11
+
+TRANS
+ __expr12
+
+TRANS
+ __expr9
+
+TRANS
+ __expr11
+
+TRANS
+ __expr12
+
+
+
+CTLSPEC
+(EF __expr13 & AG (EF __expr13))
+
+-- Symbols introduced by the dumper:
+DEFINE __expr1 := !Mek ;
+
+DEFINE __expr3 := case
+Raf : __expr2;
+TRUE : next(Raf);
+esac ;
+
+DEFINE __expr7 := case
+Mek : (next(Mek) & __expr4);
+TRUE : (__expr6 & __expr4);
+esac ;
+
+DEFINE __expr13 := ((__expr0 & __expr1) & Raf) ;
+
+DEFINE __expr6 := !next(Mek) ;
+
+DEFINE __expr8 := (Mek & Raf) ;
+
+DEFINE __expr11 := case
+Erk : (__expr1 | next(Mek));
+Mek : (next(Mek) | __expr10);
+TRUE : __expr6;
+esac ;
+
+DEFINE __expr2 := !next(Raf) ;
+
+DEFINE __expr9 := case
+Erk : (next(Erk) | __expr1);
+TRUE : (!next(Erk) | __expr8);
+esac ;
+
+DEFINE __expr5 := case
+Mek : case
+next(Mek) : __expr3;
+TRUE : __expr4;
+esac;
+next(Mek) : __expr4;
+TRUE : __expr3;
+esac ;
+
+DEFINE __expr0 := !Erk ;
+
+DEFINE __expr12 := (Erk | (__expr10 | next(Raf))) ;
+
+DEFINE __expr4 := case
+Raf : next(Raf);
+TRUE : __expr2;
+esac ;
+
+DEFINE __expr10 := !Raf ;
+
