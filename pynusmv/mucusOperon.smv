@@ -1,0 +1,65 @@
+-- NuSMV file written by SMBioNet H
+
+
+MODULE main
+
+VAR
+
+-- genes
+operon : 0 .. 2 ;
+mucuB : 0 .. 1 ;
+
+FROZENVAR
+
+-- parameters
+Koperon_alg_free : 2 .. 2 ; 
+Koperon_free : 0 .. 0 ; 
+Koperon_alg : 2 .. 2 ; 
+Koperon : 0 .. 0 ; 
+KmucuB_prod : 1 .. 1 ; 
+KmucuB : 1 .. 1 ; 
+
+DEFINE
+
+-- fonction focale
+
+F_operon :=
+case
+(operon>=1) & (!(mucuB>=1)) : Koperon_alg_free ; 
+(!(mucuB>=1)) : Koperon_free ; 
+(operon>=1) : Koperon_alg ; 
+TRUE : Koperon ; 
+esac;
+
+F_mucuB :=
+case
+(operon>=1) : KmucuB_prod ; 
+TRUE : KmucuB ; 
+esac;
+
+ASSIGN
+
+next(operon) :=
+case
+operon = F_operon : operon ;
+operon < F_operon : {operon, operon + 1} ;
+operon > F_operon : {operon - 1, operon} ;
+esac;
+
+next(mucuB) :=
+case
+mucuB =  F_mucuB : mucuB ;
+ TRUE : {0, 1} ;
+esac;
+
+
+TRANS
+
+(operon = F_operon & mucuB = F_mucuB) |
+(operon != next(operon) & mucuB  = next(mucuB)) |
+(operon  = next(operon) & mucuB != next(mucuB))
+
+--SPEC : CTL part
+CTLSPEC NAME phi_0 := ((operon=0)->AG((!(operon=2)))) ;
+
+CTLSPEC NAME phi_1 := ((operon=2)->AG((!(operon=0)))) ;
