@@ -18,7 +18,7 @@ DEFINE
 -- constantes pour représenter 0,1 et 2
 zero :=[TRUE,FALSE,FALSE];
 un :=[FALSE,TRUE,FALSE];
-deux :=[FALSE,TRUE,FALSE];
+deux :=[FALSE,FALSE,TRUE];
 
 -- fonction focale
 
