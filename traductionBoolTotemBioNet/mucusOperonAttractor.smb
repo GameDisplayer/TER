@@ -1,0 +1,63 @@
+# G. Bernot, J.-P. Comet and E.H. Snoussi. Formal methods applied to gene network modelling. In Logical Modeling of Biological Systems (eds. K. Inoue and L. Fariñas). pp. 245-289, ISBN 978-1-84821-680-8, ISTE & Wiley, 2014.
+
+# variable declaration
+VAR
+operon = 0 .. 2 ;
+mucuB = 0 .. 1 ;
+
+# regulations
+REG
+prod [(operon>=1)] => mucuB;
+free [!(mucuB>=1)] => operon;
+alg [prod] => operon;
+
+# block PARA can be used to give the value of known parameters
+PARA
+
+K_operon = 0 ;
+K_operon:free = 0 ;
+
+
+CTL
+
+AF((operon = 0) );
+# translated as (!E [(!(operon=0)) U AG((!(operon=0)))])
+
+# NOTA: en fait on a les mêmes modèles en CTL et FAIRCTL => je prends CTL pour
+# la traduction booléenne
+
+END
+
+OK Model #3
+   K_operon : 0
+   K_operon:alg : 0
+   K_operon:free : 0
+   K_operon:alg:free : 1
+   K_mucuB : 0
+   K_mucuB:prod : 1
+
+OK Model #4
+   K_operon : 0
+   K_operon:alg : 0
+   K_operon:free : 1
+   K_operon:alg:free : 2
+   K_mucuB : 0
+   K_mucuB:prod : 1
+
+KO Model #4
+   K_operon : 0
+   K_operon:alg : 1
+   K_operon:free : 0
+   K_operon:alg:free : 2
+   K_mucuB : 0
+   K_mucuB:prod : 0
+
+KO Model #5
+   K_operon : 0
+   K_operon:alg : 2
+   K_operon:free : 0
+   K_operon:alg:free : 2
+   K_mucuB : 0
+   K_mucuB:prod : 0
+
+
