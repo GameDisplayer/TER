@@ -1,0 +1,33 @@
+#  Contribution of computational tree logic to biological regulatory networks: example from pseudomonas aeruginosa, International workshop on Computational Methods in Systems Biology (CMSB), Rovereto, Italy. February 24-26, 2003
+
+# figure 4-a 
+
+VAR
+x = 0 ..2;
+y = 0 ..1;
+
+REG
+inh [!(y>=1)] => x;
+act2 [(x>=2)] => x;
+act1 [(x>=1)] => y;
+
+PARA
+
+# Parameters for X
+#K_x=0 ; 
+#K_x+inh=1 ; 
+#K_x+act2=2 ; 
+#K_x+act2+inh=2 ; 
+
+
+
+# Parameters for Y
+#K_y=0 ; 
+#K_y+act1=1 ; 
+
+
+CTL
+(x=1) -> AX(AF(x=2));
+
+
+END

@@ -1,0 +1,353 @@
+-- NuSMV file written by SMBioNet H
+
+
+MODULE main
+
+VAR
+
+-- genes
+atp : 0 .. 2 ;
+oxyg : 0 .. 1 ;
+glyc : 0 .. 2 ;
+prol : 0 .. 1 ;
+plc : 0 .. 1 ;
+dnc : 0 .. 2 ;
+ferm : 0 .. 1 ;
+nadh : 0 .. 2 ;
+krebs : 0 .. 2 ;
+phox : 0 .. 1 ;
+ros : 0 .. 3 ;
+
+FROZENVAR
+
+-- parameters
+Katp_glyc1_glyc2_nopla_phoxa : 2 .. 2 ; 
+Katp_glyc1_glyc2_phoxa : 1 .. 1 ; 
+Katp_glyc1_nopla_phoxa : 2 .. 2 ; 
+Katp_glyc1_glyc2_nopla : 2 .. 2 ; 
+Katp_glyc1_nopla : 2 .. 2 ; 
+Katp_nopla_phoxa : 2 .. 2 ; 
+Katp_glyc1_glyc2 : 1 .. 1 ; 
+Katp_glyc1_phoxa : 1 .. 1 ; 
+Katp_phoxa : 1 .. 1 ; 
+Katp_nopla : 0 .. 0 ; 
+Katp_glyc1 : 0 .. 0 ; 
+Katp : 0 .. 0 ; 
+Koxyg_oxygi_phoxo : 1 .. 1 ; 
+Koxyg_oxygi : 1 .. 1 ; 
+Kglyc_cof_glc1_glc2_nopfk : 2 .. 2 ; 
+Kglyc_glc1_glc2_nopfk : 0 .. 0 ; 
+Kglyc_cof_glc1_glc2 : 1 .. 1 ; 
+Kglyc_glc1_glc2 : 0 .. 0 ; 
+Kprol_aas_lsp_ppp : 1 .. 1 ; 
+Kprol_lsp_ppp : 1 .. 1 ; 
+Kprol_aas_lsp : 1 .. 1 ; 
+Kprol_lsp : 0 .. 0 ; 
+Kprol : 0 .. 0 ; 
+Kplc_ls_nobox : 1 .. 1 ; 
+Kplc_nobox : 0 .. 0 ; 
+Kplc : 0 .. 0 ; 
+Kdnc_inaa1_inaa2_krebsd : 2 .. 2 ; 
+Kdnc_inaa1_inaa2 : 2 .. 2 ; 
+Kferm_ep : 1 .. 1 ; 
+Kferm : 0 .. 0 ; 
+Knadh_fermn_got1_gpdh_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_gpdh_krebsn_noaas : 2 .. 2 ; 
+Knadh_got1_gpdh_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_gpdh_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_gpdh_krebsn_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_gpdh_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_krebsn_noaas : 1 .. 1 ; 
+Knadh_fermn_gpdh_noaas_phoxn : 2 .. 2 ; 
+Knadh_got1_gpdh_noaas_phoxn : 1 .. 1 ; 
+Knadh_fermn_got1_gpdh_krebsn : 0 .. 0 ; 
+Knadh_got1_gpdh_krebsn_phoxn : 0 .. 0 ; 
+Knadh_got1_gpdh_krebsn_noaas : 1 .. 1 ; 
+Knadh_gpdh_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_gpdh_krebsn_noaas : 2 .. 2 ; 
+Knadh_fermn_got1_gpdh_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_noaas_phoxn : 1 .. 1 ; 
+Knadh_fermn_got1_gpdh_noaas : 1 .. 1 ; 
+Knadh_fermn_got1_krebsn_phoxn : 0 .. 0 ; 
+Knadh_got1_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_got1_noaas : 1 .. 1 ; 
+Knadh_fermn_got1_krebsn : 0 .. 0 ; 
+Knadh_krebsn_noaas_phoxn : 2 .. 2 ; 
+Knadh_fermn_noaas_phoxn : 0 .. 0 ; 
+Knadh_gpdh_noaas_phoxn : 0 .. 0 ; 
+Knadh_fermn_got1_gpdh : 0 .. 0 ; 
+Knadh_gpdh_krebsn_noaas : 0 .. 0 ; 
+Knadh_fermn_krebsn_noaas : 0 .. 0 ; 
+Knadh_got1_noaas_phoxn : 1 .. 1 ; 
+Knadh_fermn_gpdh_noaas : 0 .. 0 ; 
+Knadh_got1_krebsn_phoxn : 0 .. 0 ; 
+Knadh_got1_krebsn_noaas : 1 .. 1 ; 
+Knadh_fermn_got1_phoxn : 0 .. 0 ; 
+Knadh_got1_gpdh_phoxn : 0 .. 0 ; 
+Knadh_got1_gpdh_noaas : 1 .. 1 ; 
+Knadh_got1_gpdh_krebsn : 0 .. 0 ; 
+Knadh_noaas_phoxn : 0 .. 0 ; 
+Knadh_fermn_noaas : 0 .. 0 ; 
+Knadh_krebsn_noaas : 0 .. 0 ; 
+Knadh_gpdh_noaas : 0 .. 0 ; 
+Knadh_got1_phoxn : 0 .. 0 ; 
+Knadh_got1_noaas : 1 .. 1 ; 
+Knadh_got1_krebsn : 0 .. 0 ; 
+Knadh_got1_gpdh : 0 .. 0 ; 
+Knadh_fermn_got1 : 0 .. 0 ; 
+Knadh_noaas : 0 .. 0 ; 
+Knadh_got1 : 0 .. 0 ; 
+Kkrebs_pnh_sat : 2 .. 2 ; 
+Kkrebs_pnh : 1 .. 1 ; 
+Kkrebs_box : 0 .. 0 ; 
+Kkrebs : 0 .. 0 ; 
+Kphox_pc : 1 .. 1 ; 
+Kphox : 0 .. 0 ; 
+Kros_noglut_nox : 2 .. 2 ; 
+Kros_nox : 1 .. 1 ; 
+Kros_noglut : 0 .. 0 ; 
+
+FROZENVAR
+
+-- environnement variables
+
+in_oxyg: 1..1 ;
+
+glc: 2..2 ;
+
+in_aa: 2..2 ;
+
+in_ag: 1..1 ;
+
+met: 1..1 ;
+
+DEFINE
+
+-- fonction focale
+
+F_atp :=
+case
+(glyc>=1) & (glyc>=2) & (!(prol>=1)) & (phox>=1) : Katp_glyc1_glyc2_nopla_phoxa ; 
+(glyc>=1) & (glyc>=2) & (phox>=1) : Katp_glyc1_glyc2_phoxa ; 
+(glyc>=1) & (!(prol>=1)) & (phox>=1) : Katp_glyc1_nopla_phoxa ; 
+(glyc>=1) & (glyc>=2) & (!(prol>=1)) : Katp_glyc1_glyc2_nopla ; 
+(glyc>=1) & (!(prol>=1)) : Katp_glyc1_nopla ; 
+(!(prol>=1)) & (phox>=1) : Katp_nopla_phoxa ; 
+(glyc>=1) & (glyc>=2) : Katp_glyc1_glyc2 ; 
+(glyc>=1) & (phox>=1) : Katp_glyc1_phoxa ; 
+(phox>=1) : Katp_phoxa ; 
+(!(prol>=1)) : Katp_nopla ; 
+(glyc>=1) : Katp_glyc1 ; 
+TRUE : Katp ; 
+esac;
+
+F_oxyg :=
+case
+(in_oxyg>=1) & (!(phox>=1)) : Koxyg_oxygi_phoxo ; 
+(in_oxyg>=1) : Koxyg_oxygi ; 
+esac;
+
+F_glyc :=
+case
+((!(atp>=2))&(!(nadh>=2))) & (glc>=1) & (glc>=2) & (!((krebs>=2)&(atp>=1))) : Kglyc_cof_glc1_glc2_nopfk ; 
+(glc>=1) & (glc>=2) & (!((krebs>=2)&(atp>=1))) : Kglyc_glc1_glc2_nopfk ; 
+((!(atp>=2))&(!(nadh>=2))) & (glc>=1) & (glc>=2) : Kglyc_cof_glc1_glc2 ; 
+(glc>=1) & (glc>=2) : Kglyc_glc1_glc2 ; 
+esac;
+
+F_prol :=
+case
+(((dnc>=2)&(atp>=1))&(nadh>=2)) & ((((krebs>=2)|(dnc>=2))|(in_ag>=1))&(atp>=1)) & (((glyc>=1)&(atp>=1))&(dnc>=1)) : Kprol_aas_lsp_ppp ; 
+((((krebs>=2)|(dnc>=2))|(in_ag>=1))&(atp>=1)) & (((glyc>=1)&(atp>=1))&(dnc>=1)) : Kprol_lsp_ppp ; 
+(((dnc>=2)&(atp>=1))&(nadh>=2)) & ((((krebs>=2)|(dnc>=2))|(in_ag>=1))&(atp>=1)) : Kprol_aas_lsp ; 
+((((krebs>=2)|(dnc>=2))|(in_ag>=1))&(atp>=1)) : Kprol_lsp ; 
+TRUE : Kprol ; 
+esac;
+
+F_plc :=
+case
+((((krebs>=2)|(dnc>=2))|(in_ag>=1))&(atp>=1)) & (!(((plc>=1)&(!(glyc>=1)))&(!(atp>=1)))) : Kplc_ls_nobox ; 
+(!(((plc>=1)&(!(glyc>=1)))&(!(atp>=1)))) : Kplc_nobox ; 
+TRUE : Kplc ; 
+esac;
+
+F_dnc :=
+case
+(in_aa>=1) & (in_aa>=2) & (!(krebs>=2)) : Kdnc_inaa1_inaa2_krebsd ; 
+(in_aa>=1) & (in_aa>=2) : Kdnc_inaa1_inaa2 ; 
+esac;
+
+F_ferm :=
+case
+((((glyc>=1)&(!(oxyg>=1)))|(glyc>=2))&(nadh>=2)) : Kferm_ep ; 
+TRUE : Kferm ; 
+esac;
+
+F_nadh :=
+case
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_got1_gpdh_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_got1_gpdh_krebsn_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_got1_gpdh_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & (glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_gpdh_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) & (!(phox>=1)) : Knadh_fermn_got1_gpdh_krebsn_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_got1_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_got1_gpdh_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_got1_krebsn_noaas ; 
+(!(ferm>=1)) & (glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_gpdh_noaas_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_got1_gpdh_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) : Knadh_fermn_got1_gpdh_krebsn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) & (!(phox>=1)) : Knadh_got1_gpdh_krebsn_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_got1_gpdh_krebsn_noaas ; 
+(glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_gpdh_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & (glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_gpdh_krebsn_noaas ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (!(phox>=1)) : Knadh_fermn_got1_gpdh_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_got1_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_got1_gpdh_noaas ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) & (!(phox>=1)) : Knadh_fermn_got1_krebsn_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_got1_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_got1_noaas ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) : Knadh_fermn_got1_krebsn ; 
+(krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_krebsn_noaas_phoxn ; 
+(!(ferm>=1)) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_fermn_noaas_phoxn ; 
+(glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_gpdh_noaas_phoxn ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) : Knadh_fermn_got1_gpdh ; 
+(glyc>=1) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_gpdh_krebsn_noaas ; 
+(!(ferm>=1)) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_krebsn_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_got1_noaas_phoxn ; 
+(!(ferm>=1)) & (glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_gpdh_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) & (!(phox>=1)) : Knadh_got1_krebsn_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_got1_krebsn_noaas ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (!(phox>=1)) : Knadh_fermn_got1_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (!(phox>=1)) : Knadh_got1_gpdh_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_got1_gpdh_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) & (krebs>=1) : Knadh_got1_gpdh_krebsn ; 
+(!(((dnc>=2)&(atp>=1))&(nadh>=2))) & (!(phox>=1)) : Knadh_noaas_phoxn ; 
+(!(ferm>=1)) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_fermn_noaas ; 
+(krebs>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_krebsn_noaas ; 
+(glyc>=1) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_gpdh_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (!(phox>=1)) : Knadh_got1_phoxn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_got1_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (krebs>=1) : Knadh_got1_krebsn ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) & (glyc>=1) : Knadh_got1_gpdh ; 
+(!(ferm>=1)) & ((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) : Knadh_fermn_got1 ; 
+(!(((dnc>=2)&(atp>=1))&(nadh>=2))) : Knadh_noaas ; 
+((dnc>=1)&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) : Knadh_got1 ; 
+esac;
+
+F_krebs :=
+case
+((glyc>=1)&(oxyg>=1)) & ((oxyg>=1)&(((glyc>=1)&(dnc>=2))|(glyc>=2))) : Kkrebs_pnh_sat ; 
+((glyc>=1)&(oxyg>=1)) : Kkrebs_pnh ; 
+(((plc>=1)&(!(glyc>=1)))&(!(atp>=1))) : Kkrebs_box ; 
+TRUE : Kkrebs ; 
+esac;
+
+F_phox :=
+case
+(((nadh>=2)&(oxyg>=1))&(!(atp>=2))) : Kphox_pc ; 
+TRUE : Kphox ; 
+esac;
+
+F_ros :=
+case
+(!((((dnc>=2)|(in_aa>=2))&(nadh>=1))&((atp>=1)|(ros>=1)))) & (((phox>=1)|(nadh>=1))&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) : Kros_noglut_nox ; 
+(((phox>=1)|(nadh>=1))&(((in_aa>=2)&(glc>=2))&(in_ag>=1))) : Kros_nox ; 
+(!((((dnc>=2)|(in_aa>=2))&(nadh>=1))&((atp>=1)|(ros>=1)))) : Kros_noglut ; 
+esac;
+
+ASSIGN
+
+next(atp) :=
+case
+atp = F_atp : atp ;
+atp < F_atp : {atp, atp + 1} ;
+atp > F_atp : {atp - 1, atp} ;
+esac;
+
+next(oxyg) :=
+case
+oxyg =  F_oxyg : oxyg ;
+ TRUE : {0, 1} ;
+esac;
+
+next(glyc) :=
+case
+glyc = F_glyc : glyc ;
+glyc < F_glyc : {glyc, glyc + 1} ;
+glyc > F_glyc : {glyc - 1, glyc} ;
+esac;
+
+next(prol) :=
+case
+prol =  F_prol : prol ;
+ TRUE : {0, 1} ;
+esac;
+
+next(plc) :=
+case
+plc =  F_plc : plc ;
+ TRUE : {0, 1} ;
+esac;
+
+next(dnc) :=
+case
+dnc = F_dnc : dnc ;
+dnc < F_dnc : {dnc, dnc + 1} ;
+dnc > F_dnc : {dnc - 1, dnc} ;
+esac;
+
+next(ferm) :=
+case
+ferm =  F_ferm : ferm ;
+ TRUE : {0, 1} ;
+esac;
+
+next(nadh) :=
+case
+nadh = F_nadh : nadh ;
+nadh < F_nadh : {nadh, nadh + 1} ;
+nadh > F_nadh : {nadh - 1, nadh} ;
+esac;
+
+next(krebs) :=
+case
+krebs = F_krebs : krebs ;
+krebs < F_krebs : {krebs, krebs + 1} ;
+krebs > F_krebs : {krebs - 1, krebs} ;
+esac;
+
+next(phox) :=
+case
+phox =  F_phox : phox ;
+ TRUE : {0, 1} ;
+esac;
+
+next(ros) :=
+case
+ros = F_ros : ros ;
+ros < F_ros : {ros, ros + 1} ;
+ros > F_ros : {ros - 1, ros} ;
+esac;
+
+
+TRANS
+
+(atp = F_atp & oxyg = F_oxyg & glyc = F_glyc & prol = F_prol & plc = F_plc & dnc = F_dnc & ferm = F_ferm & nadh = F_nadh & krebs = F_krebs & phox = F_phox & ros = F_ros) |
+(atp != next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg != next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc != next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol != next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc != next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc != next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm != next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh != next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs != next(krebs) & phox  = next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox != next(phox) & ros  = next(ros)) |
+(atp  = next(atp) & oxyg  = next(oxyg) & glyc  = next(glyc) & prol  = next(prol) & plc  = next(plc) & dnc  = next(dnc) & ferm  = next(ferm) & nadh  = next(nadh) & krebs  = next(krebs) & phox  = next(phox) & ros != next(ros))
+
+
+-- ros=1 est un attracteur
+CTLSPEC !E [(!AG((ros=1))) U AG((!AG((ros=1))))]

@@ -1,0 +1,143 @@
+-- NuSMV file written by SMBioNet H
+
+
+MODULE main
+
+VAR
+
+-- genes
+cI : 0 .. 2 ;
+cro : 0 .. 3 ;
+cII : 0 .. 1 ;
+N : 0 .. 1 ;
+
+FROZENVAR
+
+-- model 3 OK
+
+-- parameters
+KcI_acticI_autocI_inhicI : 2 .. 2 ; 
+KcI_acticI_inhicI : 2 .. 2 ; 
+KcI_autocI_inhicI : 2 .. 2 ; 
+KcI_acticI_autocI : 0..0 ; 
+KcI_inhicI : 2 .. 2 ; 
+KcI_autocI : 0 .. 0 ; 
+KcI_acticI : 1 .. 1 ; 
+KcI : 0 .. 0 ; 
+
+Kcro_autocro_inhicro : 2 .. 2 ; 
+Kcro_inhicro : 0 .. 0 ; 
+Kcro_autocro : 0 .. 0 ; 
+Kcro : 0 .. 0 ; 
+
+KcII_acticII_inhicII1_inhicII2 : 1 .. 1 ; 
+KcII_acticII_inhicII2 : 0 .. 0 ; 
+KcII_inhicII1_inhicII2 : 0 .. 0 ; 
+KcII_acticII_inhicII1 : 0 .. 0 ; 
+KcII_inhicII2 : 0 .. 0 ; 
+KcII_inhicII1 : 0 .. 0 ; 
+KcII_acticII : 0 .. 0 ; 
+KcII : 0 .. 0 ; 
+
+KN_inhiN1_inhiN2 : 1 .. 1 ; 
+KN_inhiN2 : 0 .. 0 ; 
+KN_inhiN1 : 0 .. 0 ; 
+KN : 0 .. 0 ; 
+
+DEFINE
+
+-- fonction focale
+
+F_cI :=
+case
+(cII>=1) & (cI>=2) & (!(cro>=1)) : KcI_acticI_autocI_inhicI ; 
+(cII>=1) & (!(cro>=1)) : KcI_acticI_inhicI ; 
+(cI>=2) & (!(cro>=1)) : KcI_autocI_inhicI ; 
+(cII>=1) & (cI>=2) : KcI_acticI_autocI ; 
+(!(cro>=1)) : KcI_inhicI ; 
+(cI>=2) : KcI_autocI ; 
+(cII>=1) : KcI_acticI ; 
+TRUE : KcI ; 
+esac;
+
+F_cro :=
+case
+(!(cro>=3)) & (!(cI>=2)) : Kcro_autocro_inhicro ; 
+(!(cI>=2)) : Kcro_inhicro ; 
+(!(cro>=3)) : Kcro_autocro ; 
+TRUE : Kcro ; 
+esac;
+
+F_cII :=
+case
+(N>=1) & (!(cI>=2)) & (!(cro>=3)) : KcII_acticII_inhicII1_inhicII2 ; 
+(N>=1) & (!(cro>=3)) : KcII_acticII_inhicII2 ; 
+(!(cI>=2)) & (!(cro>=3)) : KcII_inhicII1_inhicII2 ; 
+(N>=1) & (!(cI>=2)) : KcII_acticII_inhicII1 ; 
+(!(cro>=3)) : KcII_inhicII2 ; 
+(!(cI>=2)) : KcII_inhicII1 ; 
+(N>=1) : KcII_acticII ; 
+TRUE : KcII ; 
+esac;
+
+F_N :=
+case
+(!(cI>=1)) & (!(cro>=2)) : KN_inhiN1_inhiN2 ; 
+(!(cro>=2)) : KN_inhiN2 ; 
+(!(cI>=1)) : KN_inhiN1 ; 
+TRUE : KN ; 
+esac;
+
+ASSIGN
+
+next(cI) :=
+case
+cI = F_cI : cI ;
+cI < F_cI : {cI, cI + 1} ;
+cI > F_cI : {cI - 1, cI} ;
+esac;
+
+next(cro) :=
+case
+cro = F_cro : cro ;
+cro < F_cro : {cro, cro + 1} ;
+cro > F_cro : {cro - 1, cro} ;
+esac;
+
+next(cII) :=
+case
+cII =  F_cII : cII ;
+ TRUE : {0, 1} ;
+esac;
+
+next(N) :=
+case
+N =  F_N : N ;
+ TRUE : {0, 1} ;
+esac;
+
+
+TRANS
+
+(cI = F_cI & cro = F_cro & cII = F_cII & N = F_N) |
+(cI != next(cI) & cro  = next(cro) & cII  = next(cII) & N  = next(N)) |
+(cI  = next(cI) & cro != next(cro) & cII  = next(cII) & N  = next(N)) |
+(cI  = next(cI) & cro  = next(cro) & cII != next(cII) & N  = next(N)) |
+(cI  = next(cI) & cro  = next(cro) & cII  = next(cII) & N != next(N))
+
+-- ajouté à la main pour remplacer la premisse de l'implication
+-- fixe l'état initial
+ASSIGN
+
+init(cI):=0;
+init(cro):={2,3}; -- remplace cro>=2
+init(cII):=0;
+init(N):=0;
+
+
+--SPEC : CTL part
+--CTLSPEC NAME phi_0 := (((((cI=0)&(cro>=2))&(cII=0))&(N=0))->AG(((((cI=0)&(cro>=2))&(cII=0))&(N=0)))) ;
+
+-- l'état (cI=0)&(cro=3))&(cII=0))&(N=0) est un attracteur
+CTLSPEC AG(((((cI=0)&(cro>=2))&(cII=0))&(N=0)));
+

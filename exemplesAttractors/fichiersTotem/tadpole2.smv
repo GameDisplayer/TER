@@ -1,0 +1,172 @@
+-- NuSMV file written by SMBioNet H
+
+
+MODULE main
+
+VAR
+
+-- genes
+T3 : 0 .. 3 ;
+T4 : 0 .. 2 ;
+d2 : 0 .. 1 ;
+d3 : 0 .. 1 ;
+gi : 0 .. 1 ;
+gp : 0 .. 1 ;
+gt : 0 .. 1 ;
+tr : 0 .. 1 ;
+
+FROZENVAR
+
+-- parameters
+KT3_catalyse1_catalyse3 : 3 .. 3 ; 
+KT3_catalyse3 : 3 .. 3 ; 
+KT3_catalyse1 : 3 .. 3 ; 
+KT3 : 1 .. 1 ; 
+KT4_catalyse2 : 2 .. 2 ; 
+KT4 : 2 .. 2 ; 
+Kd2_acti1_inhi1 : 1 .. 1 ; 
+Kd2_inhi1 : 1 .. 1 ; 
+Kd2_acti1 : 1 .. 1 ; 
+Kd2 : 1 .. 1 ; 
+Kd3_acti2_inhi2 : 0 .. 0 ; 
+Kd3_inhi2 : 0 .. 0 ; 
+Kd3_acti2 : 0 .. 0 ; 
+Kd3 : 0 .. 0 ; 
+Kgi_acti2 : 1 .. 1 ; 
+Kgi : 0 .. 0 ; 
+Kgp_acti3 : 1 .. 1 ; 
+Kgp : 0 .. 0 ; 
+Kgt_factransc : 1 .. 1 ; 
+Kgt : 0 .. 0 ; 
+Ktr_acti3_inhi1 : 1 .. 1 ; 
+Ktr_inhi1 : 0 .. 0 ; 
+Ktr_acti3 : 0 .. 0 ; 
+Ktr : 0 .. 0 ; 
+
+DEFINE
+
+-- fonction focale
+
+F_T3 :=
+case
+((d2>=1)&(T4>=1)) & (!((d3>=1)&(T3>=1))) : KT3_catalyse1_catalyse3 ; 
+(!((d3>=1)&(T3>=1))) : KT3_catalyse3 ; 
+((d2>=1)&(T4>=1)) : KT3_catalyse1 ; 
+TRUE : KT3 ; 
+esac;
+
+F_T4 :=
+case
+(!((d3>=1)&(T4>=1))) : KT4_catalyse2 ; 
+TRUE : KT4 ; 
+esac;
+
+F_d2 :=
+case
+(gi>=1) & (!(gt>=1)) : Kd2_acti1_inhi1 ; 
+(!(gt>=1)) : Kd2_inhi1 ; 
+(gi>=1) : Kd2_acti1 ; 
+TRUE : Kd2 ; 
+esac;
+
+F_d3 :=
+case
+(T3>=1) & (!(gp>=1)) : Kd3_acti2_inhi2 ; 
+(!(gp>=1)) : Kd3_inhi2 ; 
+(T3>=1) : Kd3_acti2 ; 
+TRUE : Kd3 ; 
+esac;
+
+F_gi :=
+case
+(T3>=1) : Kgi_acti2 ; 
+TRUE : Kgi ; 
+esac;
+
+F_gp :=
+case
+(T3>=2) : Kgp_acti3 ; 
+TRUE : Kgp ; 
+esac;
+
+F_gt :=
+case
+((T3>=3)&(tr>=1)) : Kgt_factransc ; 
+TRUE : Kgt ; 
+esac;
+
+F_tr :=
+case
+(T3>=2) & (!(gt>=1)) : Ktr_acti3_inhi1 ; 
+(!(gt>=1)) : Ktr_inhi1 ; 
+(T3>=2) : Ktr_acti3 ; 
+TRUE : Ktr ; 
+esac;
+
+ASSIGN
+
+next(T3) :=
+case
+T3 = F_T3 : T3 ;
+T3 < F_T3 : {T3, T3 + 1} ;
+T3 > F_T3 : {T3 - 1, T3} ;
+esac;
+
+next(T4) :=
+case
+T4 = F_T4 : T4 ;
+T4 < F_T4 : {T4, T4 + 1} ;
+T4 > F_T4 : {T4 - 1, T4} ;
+esac;
+
+next(d2) :=
+case
+d2 =  F_d2 : d2 ;
+ TRUE : {0, 1} ;
+esac;
+
+next(d3) :=
+case
+d3 =  F_d3 : d3 ;
+ TRUE : {0, 1} ;
+esac;
+
+next(gi) :=
+case
+gi =  F_gi : gi ;
+ TRUE : {0, 1} ;
+esac;
+
+next(gp) :=
+case
+gp =  F_gp : gp ;
+ TRUE : {0, 1} ;
+esac;
+
+next(gt) :=
+case
+gt =  F_gt : gt ;
+ TRUE : {0, 1} ;
+esac;
+
+next(tr) :=
+case
+tr =  F_tr : tr ;
+ TRUE : {0, 1} ;
+esac;
+
+
+TRANS
+
+(T3 = F_T3 & T4 = F_T4 & d2 = F_d2 & d3 = F_d3 & gi = F_gi & gp = F_gp & gt = F_gt & tr = F_tr) |
+(T3 != next(T3) & T4  = next(T4) & d2  = next(d2) & d3  = next(d3) & gi  = next(gi) & gp  = next(gp) & gt  = next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4 != next(T4) & d2  = next(d2) & d3  = next(d3) & gi  = next(gi) & gp  = next(gp) & gt  = next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4  = next(T4) & d2 != next(d2) & d3  = next(d3) & gi  = next(gi) & gp  = next(gp) & gt  = next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4  = next(T4) & d2  = next(d2) & d3 != next(d3) & gi  = next(gi) & gp  = next(gp) & gt  = next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4  = next(T4) & d2  = next(d2) & d3  = next(d3) & gi != next(gi) & gp  = next(gp) & gt  = next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4  = next(T4) & d2  = next(d2) & d3  = next(d3) & gi  = next(gi) & gp != next(gp) & gt  = next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4  = next(T4) & d2  = next(d2) & d3  = next(d3) & gi  = next(gi) & gp  = next(gp) & gt != next(gt) & tr  = next(tr)) |
+(T3  = next(T3) & T4  = next(T4) & d2  = next(d2) & d3  = next(d3) & gi  = next(gi) & gp  = next(gp) & gt  = next(gt) & tr != next(tr))
+
+--SPEC : CTL part
+CTLSPEC NAME phi_0 := (((((((((T3=3)&(T4=1))&(d2=1))&(d3=0))&(gi=1))&(gp=1))&(tr=1))&(gt=0))->AF((gt=1))) ;

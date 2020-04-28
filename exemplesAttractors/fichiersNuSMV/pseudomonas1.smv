@@ -1,0 +1,74 @@
+-- NuSMV file written by SMBioNet H
+
+
+MODULE main
+
+VAR
+
+-- genes
+x : 0 .. 2 ;
+y : 0 .. 1 ;
+
+FROZENVAR
+
+-- OK Model #7
+
+-- parameters
+Kx_act2_inh : 2 .. 2 ; 
+Kx_inh : 2 .. 2 ; 
+Kx_act2 : 2 .. 2 ; 
+Kx : 2 .. 2 ; 
+Ky_act1 : 1 .. 1 ; 
+Ky : 1 .. 1 ; 
+
+DEFINE
+
+-- fonction focale
+
+F_x :=
+case
+(x>=2) & (!(y>=1)) : Kx_act2_inh ; 
+(!(y>=1)) : Kx_inh ; 
+(x>=2) : Kx_act2 ; 
+TRUE : Kx ; 
+esac;
+
+F_y :=
+case
+(x>=1) : Ky_act1 ; 
+TRUE : Ky ; 
+esac;
+
+ASSIGN
+
+next(x) :=
+case
+x = F_x : x ;
+x < F_x : {x, x + 1} ;
+x > F_x : {x - 1, x} ;
+esac;
+
+next(y) :=
+case
+y =  F_y : y ;
+ TRUE : {0, 1} ;
+esac;
+
+
+TRANS
+
+(x = F_x & y = F_y) |
+(x != next(x) & y  = next(y)) |
+(x  = next(x) & y != next(y))
+
+-- ajouté à la main pour remplacer la premisse de l'implication
+-- fixe l'état initial
+ASSIGN
+
+init(x):=1;
+
+
+--SPEC : CTL part
+--CTLSPEC NAME phi_0 := ((x=1)->AX(AF((x=2)))) ;
+
+CTLSPEC AX(AF((x=2)));
