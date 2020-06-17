@@ -6,7 +6,7 @@ Analyse des phénotypes dans les réseaux de régulation génétiques: étude de
 ## Objectifs:
 
 Ce github a pour ambition de retracer les principes étapes d'analyse des librairies et des algorithmes étudiés au long de notre TER.
-De manière non exhaustive vous trouverez les réponses à ces différents point :
+De manière non exhaustive vous trouverez les réponses à ces différents points :
 - [x] Essayer de tracer complètement la démarche de l'article sur les commitment sets à l'aide de PyBoolNet et comprendre comment sont obtenus les diagrammes de la figure 3 de [l'article de départ](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8580379). 
 - [x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
 - [x] Analyse du parser de NuSMV -a et compréhension de NuSMV
