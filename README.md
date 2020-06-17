@@ -1,11 +1,15 @@
-# TRAVAIL D'ETUDE ET DE RECHERCHE
+# TRAVAIL D'ETUDE ET DE RECHERCHE - M1 Informatique Université Nice Côte d'Azur
+
+## Auteurs
+
+Nina SINGLAN et Romain MICHELUCCI sous la direction de Hélène Collavizza.
 
 ## Sujet:
 Analyse des phénotypes dans les réseaux de régulation génétiques: étude de cas du métabolisme énergétique dans le cancer du pancréas.
 
 ## Objectifs:
 
-Ce github a pour ambition de retracer les principes étapes d'analyse des librairies et des algorithmes étudiés au long de notre TER.
+Ce github a pour ambition de retracer les principales étapes d'analyse des librairies et des algorithmes étudiés tout au long de notre TER.
 De manière non exhaustive vous trouverez les réponses à ces différents points :
 - [x] Essayer de tracer complètement la démarche de l'article sur les commitment sets à l'aide de PyBoolNet et comprendre comment sont obtenus les diagrammes de la figure 3 de [l'article de départ](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8580379). 
 - [x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
