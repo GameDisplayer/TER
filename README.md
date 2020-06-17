@@ -12,11 +12,11 @@ De manière non exhaustive vous trouverez les réponses à ces différents point
 - [x] Etude de librairies annexes permettant la génération de primes implicants à partir d'un BDD
 
 ## Détails :
-
-- Le dossier [**Rapports**](/Rapports) contient les différents rapports écrits au cours du semestre sur nos recherches.
+Ci dessous sont détaillés les contenus des dossiers :
+- **Rapports** contient les différents rapports écrits au cours du semestre sur nos recherches.
 - **NuSMV** comprend une étude des options du vérificateur de modèle symbolique [NuSMV](http://nusmv.fbk.eu/)
-- Le dossier **PyBoolNet** contient de nombreux sous-dossiers (dont leur contenu est décrit) liés à l'utilisation et l'étude complète de cette [librairie python](https://github.com/hklarner/PyBoolNet)
-- Le dossier **PyNuSMV** contient un fichier test permettant de mieux comprendre l'intérêt de la librairie du même nom accessible [ici](https://github.com/sbusard/pynusmv)
-- Le dossier **NuSMV-a** contient lui aussi plusieurs sous dossiers détaillés dans l'arborescence.
-- **Algorithmes** suit l'étude approfondie d'algorithmes de graphe étudiés.
+- **PyBoolNet** contient de nombreux sous-dossiers (dont leur contenu est décrit) liés à l'utilisation et l'étude complète de cette [librairie python](https://github.com/hklarner/PyBoolNet)
+- **PyNuSMV** contient un fichier test permettant de mieux comprendre l'intérêt de la librairie du même nom accessible [ici](https://github.com/sbusard/pynusmv)
+- **NuSMV-a** contient lui aussi plusieurs sous dossiers détaillés dans l'arborescence.
+- **Algorithmes** retrace l'étude approfondie d'algorithmes de graphe étudiés.
 
