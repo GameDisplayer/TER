@@ -1,14 +1,15 @@
 # TER
-Sujet : Analyse des phénotypes dans les réseaux de régulation génétiques: étude de cas du métabolisme énergétique dans le cancer du pancréas.
+## Sujet:
+Analyse des phénotypes dans les réseaux de régulation génétiques: étude de cas du métabolisme énergétique dans le cancer du pancréas.
 
 ## Objectifs:
 
 Ce github a pour ambition de retracer les principes étapes d'analyse des librairies et des algorithmes étudiés.
 De manière non exhaustive vous trouverez les réponses à ces différents point :
-[x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
-[x] Essayer de tracer complètement la démarche de l'article sur les commitment sets et comprendre comment sont obtenus les diagrammes de la figure 3 de l'article de départ. Essayer aussi de voir en détail les entrées/sorties vers NuSMV-a.
-[x] Analyse du parser de NuSMV -a et compréhension de NuSMV
-[x] Etude de librairies annexes permettant la génération de primes implicants à partir d'un BDD
+- [x] Approfondir le fonctionnement de NuSMV-a en espérant récupérer des états acceptants sous une forme plus générale
+- [x] Essayer de tracer complètement la démarche de l'article sur les commitment sets et comprendre comment sont obtenus les diagrammes de la figure 3 de l'article de départ. Essayer aussi de voir en détail les entrées/sorties vers NuSMV-a.
+- [x] Analyse du parser de NuSMV -a et compréhension de NuSMV
+- [x] Etude de librairies annexes permettant la génération de primes implicants à partir d'un BDD
 
 ## Détails :
 
