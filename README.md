@@ -2,7 +2,7 @@
 
 ## Auteurs
 
-Nina SINGLAN et Romain MICHELUCCI sous la direction de Hélène Collavizza.
+Nina SINGLAN et Romain MICHELUCCI sous la direction de Hélène COLLAVIZZA.
 
 ## Sujet:
 Analyse des phénotypes dans les réseaux de régulation génétiques: étude de cas du métabolisme énergétique dans le cancer du pancréas.
