@@ -13,7 +13,7 @@ De manière non exhaustive vous trouverez les réponses à ces différents point
 
 ## Détails :
 
-- Le dossier **Rapports** contient les différents rapports écrits au cours du semestre sur nos recherches.
+- Le dossier [**Rapports**](/Rapports) contient les différents rapports écrits au cours du semestre sur nos recherches.
 - **NuSMV** comprend une étude des options du vérificateur de modèle symbolique [NuSMV](http://nusmv.fbk.eu/)
 - Le dossier **PyBoolNet** contient de nombreux sous-dossiers (dont leur contenu est décrit) liés à l'utilisation et l'étude complète de cette [librairie python](https://github.com/hklarner/PyBoolNet)
 - Le dossier **PyNuSMV** contient un fichier test permettant de mieux comprendre l'intérêt de la librairie du même nom accessible [ici](https://github.com/sbusard/pynusmv)
